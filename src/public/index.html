@@ -8,7 +8,7 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>MJEKOTT || SOFTWARE DEVELOPER</title>
     <style>
       * {
         margin: 0;
@@ -34,7 +34,14 @@
     </style>
   </head>
   <body class="bg-gray-100 antialiased font-mono text-white ">
-    <div class="main-container h-full p-1">
+    <div class="main-container h-full p-1 ">
+      <div class="flex justify-center items-center p-2 space-x-10 mb-2">
+        <a href="https://hng.tech/"><img src="./images/hng_logo.png" class="w-28 h-12" alt=HNG"></a>
+        <a href="https://training.zuri.team/"> <img src="./images/zuri.png" class="w-28 h-12" alt="Zuri"></a>
+           <a href="https://ingressive.org//"> <img src="./images/I4G.png" class="w-28 h-12" alt="I4G"></a>
+            
+          
+      </div>
       <header
         class="
           flex flex-col
@@ -57,7 +64,7 @@
       <main class="bg-gray-100 bg-gray-900">
         <div class="flex flex-col lg:flex-row h-full">
       
-          <div class="flex flex-col">
+          <div class="flex flex-col lg:mr-10">
             <div class="text-center bg-gray-900 p-5 text-gray-100">
               <h2 class="text-center text-xl mb-2">Summary</h2>
               I am a FullStack Developer that sepcilaizes in React,Vue,Nest js,
@@ -145,11 +152,12 @@
             <div>
               <h2 class="text-2xl font-bold text-center mt-5">Social Links</h2>
               <ul class="px-3 text-lg space-y-1">
-                <li>🎸 Github:- mjekott </li>
-                <li>😻  Instagram:- mjekott</li>
-                <li>🥶 Twitter:- mjekott</li>
+                <li> <a href="https://github.com/mjekott">📕  Github:- mjekott</a> </li>
+                <li> <a href="https://www.instagram.com/mjekott/">😻Instagram:- mjekott</a></li>
+                <li><a href="https://twitter.com/mjekott">🥶Twitter:- mjekott</a></li>
                 <li>📥  Slack :- mjekott</li>
               </ul>
+           
             </div>
             <div>
               <h2 class="text-2xl font-bold text-center mt-5">Skills</h2>
@@ -165,21 +173,21 @@
               </ul>
             </div>
          
-            <div class="flex flex-col space-y-2 pt-5 px-4">
+            <div class="flex flex-col space-y-2 pt-5 px-1">
               <h2 class="text-xl text-center">Contact Me</h2>
               <div id="errorMessage" class=" text-center text-md py-1 px-2 hidden">Message sent Successfully</div>
               <form action="" class="space-y-2" >
                 <div class="flex flex-col ">
                  <label for="name" class="mb-1">Name</label>
-                 <input type="text" class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400"  id="name"  required>
+                 <input type="text" class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400"  id="name"  >
                 </div>
                 <div class="flex flex-col ">
                   <label for="name" class="mb-1">Email</label>
-                  <input type="email" class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400"  id="email"  required>
+                  <input type="email" class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400"  id="email"  >
                  </div>
                  <div class="flex flex-col ">
                   <label for="name" class="mb-1">Message</label>
-                <textarea name="" id="message"  class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400 resize-none"  required></textarea>
+                <textarea name="" id="message"  class="px-1 py-1 rounded outline-none text-gray-800 focus:ring ring-red-400 resize-none"  ></textarea>
                  </div>
                  <div>
                    <button class="w-full p-2 bg-red-900 hover:bg-opacity-75 ">Submit</button>
@@ -201,6 +209,9 @@
     
       form.addEventListener('submit',(e)=>{
         e.preventDefault();
+        displayMessage.classList.add('hidden');
+        displayMessage.innerHTML= ""
+
         const formData = {
           name:name.value,
           email:email.value,
@@ -230,13 +241,27 @@
     name.value = "";
     email.value= "";
     message.value =""
+
   }).catch(async(err)=>{
     const data = await err.json()
     displayMessage.classList.remove('hidden');
     displayMessage.classList.add('bg-red-500')
-    displayMessage.innerHTML = data.error
+    displayMessage.innerHTML = data.error.msg
+    setTimeout(()=>{
+      displayMessage.classList.add('hidden');
+      displayMessage.innerHTML = ""
+      
+    },3000)
    
   })
+
+  setTimeout(()=>{
+      displayMessage.classList.add('hidden');
+      displayMessage.classList.remove('bg-green-500')
+      displayMessage.classList.remove('bg-red-500')
+      displayMessage.innerHTML = ""
+      
+    },5000)
       
       })
     </script>
